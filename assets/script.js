@@ -32,6 +32,7 @@ function makeMiddleRowOfKeyboard(){
 function MakeBottomRowOfKeyboard(){
     var enterButton = document.createElement("div")
     enterButton.setAttribute("class", "keyboard-button container big-keyboard-button")
+    enterButton.setAttribute("id", "enter-button")
     enterButton.innerHTML = "ENTER"
     document.getElementById("keyboard-row3").appendChild(enterButton)
 
