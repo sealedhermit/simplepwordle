@@ -19,8 +19,8 @@ body{
     width: 18%;
     height: 15%;
     border-radius: 1;
-    background-color: rgb(227, 227, 227);
-    border: 1px solid gray;
+    background-color: rgb(255, 255, 255);
+    border: 2px solid rgb(211, 211, 211);
     margin-left: 3px;
     margin-right: 3px;
 }
@@ -43,11 +43,12 @@ body{
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: rgb(176, 176, 176);
+    background-color: rgb(211, 211, 211);
     height: 58px;
     width: 31px;
     margin-top: 5px;
     border-radius: 3px;
+    border: none;
     
 }
 #keyboard-row1{
