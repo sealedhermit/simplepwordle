@@ -56,12 +56,18 @@ function MakeBottomRowOfKeyboard(){
     deleteButton.innerHTML = "DEL"
     document.getElementById("keyboard-row3").appendChild(deleteButton)
 }
+function checkForWin(){
+    if (currentUserWord[0] == word[0][0]&&currentUserWord[1]==word[1][0]&&currentUserWord[2]==word[2][0] && currentUserWord[3]==word[3][0] && currentUserWord[4]==word[4][0]){
+        console.log("you Win!")
+    }
+}
 //TODO:still have to figure out what to do with compare word and all that
 function checkForTrueMatches(){
     for (var i = 0; i < compareWord.length;i++){
         if(currentUserWord[i] == compareWord[i][0]){
             document.getElementById("letter-box"+eval(currentGuess*5+i)).setAttribute("class", "green-letter-box")
             document.getElementById("key-"+compareWord[i][0]).style.backgroundColor = "green"
+            document.getElementById("key-"+compareWord[i][0]).style.color = "white"
         }
     }
 }
@@ -72,7 +78,6 @@ function checkForTrueMatches(){
 
 document.getElementById("keyboard-container").addEventListener("click", function(event){
     var buttonClicked = event.target
-    console.log(buttonClicked.tagName)
     if(buttonClicked.tagName != "BUTTON"){
         return
     }
@@ -93,6 +98,7 @@ document.getElementById("keyboard-container").addEventListener("click", function
             return
         }
         //check guess against word
+        checkForWin()
         checkForTrueMatches()
         console.log(currentBoxIndex)
         currentGuess += 1
