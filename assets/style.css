@@ -16,6 +16,9 @@ body{
     justify-content: center
 }
 .letter-box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 18%;
     height: 15%;
     border-radius: 1;
@@ -23,6 +26,21 @@ body{
     border: 2px solid rgb(211, 211, 211);
     margin-left: 3px;
     margin-right: 3px;
+    font-size: 40px;
+}
+.green-letter-box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 18%;
+    height: 15%;
+    border-radius: 1;
+    background-color: green;
+    border: 2px solid rgb(211, 211, 211);
+    margin-left: 3px;
+    margin-right: 3px;
+    font-size: 40px;
+    color: white;
 }
 #keyboard-container{
     display: flex;
@@ -49,7 +67,19 @@ body{
     margin-top: 5px;
     border-radius: 3px;
     border: none;
-    
+    color: black; 
+}
+.green-keyboard-button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: green;
+    height: 58px;
+    width: 31px;
+    margin-top: 5px;
+    border-radius: 3px;
+    border: none;
+    color: white 
 }
 #keyboard-row1{
     length: 400px;
