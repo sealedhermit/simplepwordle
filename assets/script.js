@@ -86,6 +86,9 @@ function checkForWin(){
             topHeader.textContent = "You Won in "+(currentGuess+1)+" Guesses!"
         }
     }
+    if(currentGuess >= 5){
+        topHeader.textContent = "You Lose!! Bummer!"
+    }
 }
 function checkLetterForOrangeAndReturnIndex(letter){
     for(var i = 0; i < 5; i++){
