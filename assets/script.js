@@ -1,13 +1,15 @@
 $(document).ready(function(){
 
 
-var word = [["Q"], ["E"], ["R"], ["T"], ["Y"]]
-var compareWord = word
+const word = ["Q", "Q", "R", "T", "Y"]
+var compareWord = [["Q","0"], ["Q","0"], ["R","0"], ["T","0"], ["Y","0"]]
+
 
 var querty = ["Q", "W", "E", "R", "T","Y", "U","I","O", "P", "A", "S", "D", "F", "G", "H", "J", "K", "L", "ENTER", "Z", "X", "C", "V", "B", "N", "M", "DEL"]
 var currentGuess = 0
 var currentUserWord = []
 var currentBoxIndex = 0
+
 
 function drawLetterBoxes(){
     for(var i = 0; i<30;i++){
@@ -58,21 +60,119 @@ function MakeBottomRowOfKeyboard(){
 }
 function checkForWin(){
     if (currentUserWord[0] == word[0][0]&&currentUserWord[1]==word[1][0]&&currentUserWord[2]==word[2][0] && currentUserWord[3]==word[3][0] && currentUserWord[4]==word[4][0]){
-        console.log("you Win!")
+
     }
 }
-//TODO:still have to figure out what to do with compare word and all that
+function checkLetterForOrangeAndReturnIndex(letter){
+    for(var i = 0; i < 5; i++){
+        if(letter == compareWord[i][0] && compareWord[i][1]=="0"){
+            return [true, i]
+        }
+    }
+    return [false, false]
+}
+
+
 function checkForTrueMatches(){
-    for (var i = 0; i < compareWord.length;i++){
+    for(var i = 0;i<5;i++){
+        document.getElementById("letter-box"+eval(currentGuess*5+i)).setAttribute("class", "letter-box") //
+    }
+    for (var i = 0; i < 5;i++){
+
         if(currentUserWord[i] == compareWord[i][0]){
-            document.getElementById("letter-box"+eval(currentGuess*5+i)).setAttribute("class", "green-letter-box")
-            document.getElementById("key-"+compareWord[i][0]).style.backgroundColor = "green"
-            document.getElementById("key-"+compareWord[i][0]).style.color = "white"
+            compareWord[i][1] = "*"
+            document.getElementById("letter-box"+eval(currentGuess*5+i)).setAttribute("class", "letter-box custom-green")
+            document.getElementById("letter-box"+eval(currentGuess*5+i)).style.backgroundColor = "green"
+            document.getElementById("letter-box"+eval(currentGuess*5+i)).style.color = "white"
+
+
+            document.getElementById("key-"+currentUserWord[i]).style.backgroundColor = "green"
+            document.getElementById("key-"+currentUserWord[i]).style.color = "white"
+
+            document.getElementById("key-"+currentUserWord[i]).setAttribute("class","keyboard-button container custom-green")  
+            
+        }
+    }
+
+}
+function checkForOranges(){
+   
+
+    //TODO: shit is all fucked up
+    for(var i = 0;i<5;i++){
+        if((checkLetterForOrangeAndReturnIndex(currentUserWord[i])[0]==true) && currentUserWord[i] != compareWord[i][0]) {
+            var hashtagIndex = checkLetterForOrangeAndReturnIndex(currentUserWord[i])[1]
+            
+
+            console.log(hashtagIndex)
+            compareWord[hashtagIndex][1] = "#"
+            document.getElementById("letter-box"+eval(currentGuess*5+i)).style.backgroundColor = "orange"
+            document.getElementById("letter-box"+eval(currentGuess*5+i)).style.color = "white"
+            document.getElementById("letter-box"+eval(currentGuess*5+i)).setAttribute("class","letter-box custom-orange")
+            if(document.getElementById("key-"+currentUserWord[i]).className == "keyboard-button container custom-green"){
+                    
+            }else{
+                document.getElementById("key-"+currentUserWord[i]).style.backgroundColor = "orange"
+                document.getElementById("key-"+currentUserWord[i]).style.color = "white"
+                document.getElementById("key-"+currentUserWord[i]).setAttribute("class","keyboard-button container custom-orange")
+
+            }
+        }
+    }
+
+
+
+
+
+
+
+
+
+    // //then for each leter of the user word
+    // for(var i = 0; i<5; i++){
+    //     //check each letter of the compare word
+    //     for(var x = 0; x < 5;x++){
+            // if((currentUserWord[i] == compareWord[x][0]) && (compareWord[x][1] =="0") && (currentUserWord[i] != compareWord[i][0])){
+            //     compareWord[x][1] = "#"
+                // document.getElementById("letter-box"+eval(currentGuess*5+i)).style.backgroundColor = "orange"
+                // document.getElementById("letter-box"+eval(currentGuess*5+i)).style.color = "white"
+                // document.getElementById("letter-box"+eval(currentGuess*5+1)).setAttribute("class","letter-box custom-orange")
+            //     if(document.getElementById("letter-box"+eval(currentGuess*5+i)).className == "letter-box custom-green"){
+                    
+            //     }else{
+            //         document.getElementById("key-"+currentUserWord[i]).style.backgroundColor = "orange"
+            //         document.getElementById("key-"+currentUserWord[i]).style.color = "white"
+            //         document.getElementById("key-"+currentUserWord[i]).setAttribute("class","letter-box custom-orange")
+
+            //     }
+                
+              
+            //  } 
+
+    //     }
+    // }
+
+}
+function checkForGrays(){
+    for(var i = 0; i < 5; i++){
+        if((document.getElementById("letter-box"+eval(currentGuess*5+i)).className == "letter-box custom-green"||
+            document.getElementById("letter-box"+eval(currentGuess*5+i)).className == "letter-box custom-orange")){
+
+        }else{
+            document.getElementById("letter-box"+eval(currentGuess*5+i)).style.backgroundColor = "gray"
+            document.getElementById("letter-box"+eval(currentGuess*5+i)).style.color = "white"
+            document.getElementById("key-"+currentUserWord[i]).style.backgroundColor = "gray"
+                    document.getElementById("key-"+currentUserWord[i]).style.color = "white"
         }
     }
 }
+function resetCompareWord(){
+    for (var i = 0; i< 5; i++){
+        compareWord[i][1] = "0"
+    }
+}
 
-    
+
 
 //================================When buttons are clicked======
 
@@ -82,14 +182,13 @@ document.getElementById("keyboard-container").addEventListener("click", function
         return
     }
     if(buttonClicked.innerHTML == "DEL"){
-        
+
         if(currentUserWord.length == 0){
             return
         }
         currentUserWord.pop()
         document.getElementById("letter-box"+currentBoxIndex).innerHTML = ""
         currentBoxIndex -= 1
-        console.log(currentUserWord)
         return
     }
     if(buttonClicked.innerHTML == "ENTER"){
@@ -98,23 +197,27 @@ document.getElementById("keyboard-container").addEventListener("click", function
             return
         }
         //check guess against word
+        
+
         checkForWin()
         checkForTrueMatches()
-        console.log(currentBoxIndex)
+        checkForOranges()
+        checkForGrays()
+        resetCompareWord()
+        //compareWord = word
         currentGuess += 1
         currentUserWord = []
         return
-       
+
     }
     if(currentUserWord.length >=5){
         return
     }
-    
+
     currentBoxIndex = (currentGuess * 5)+currentUserWord.length
-    console.log(document.getElementById("letter-box"+currentBoxIndex).innerHTML)
     document.getElementById("letter-box"+currentBoxIndex).innerHTML = buttonClicked.innerHTML
     currentUserWord.push(buttonClicked.innerHTML)
-    console.log(currentUserWord)
+    
 
 
 
