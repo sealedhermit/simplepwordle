@@ -61,6 +61,14 @@ function MakeBottomRowOfKeyboard(){
     deleteButton.innerHTML = "DEL"
     document.getElementById("keyboard-row3").appendChild(deleteButton)
 }
+function checkForValidGuess(){
+    var wordString = currentUserWord.join("")
+    console.log(wordString)
+    if(possibleWordGuessesArray.includes(wordString)){
+        return true
+    }else {return false}
+}
+
 function checkForWin(){
     if (currentUserWord[0] == word[0][0]&&currentUserWord[1]==word[1][0]&&currentUserWord[2]==word[2][0] && currentUserWord[3]==word[3][0] && currentUserWord[4]==word[4][0]){
         if(currentGuess == 0){
@@ -205,8 +213,8 @@ document.getElementById("keyboard-container").addEventListener("click", function
             return
         }
         //check guess against word
-        
-
+        if(checkForValidGuess()){
+            checkForValidGuess()
         checkForWin()
         checkForTrueMatches()
         checkForOranges()
@@ -216,6 +224,8 @@ document.getElementById("keyboard-container").addEventListener("click", function
         currentGuess += 1
         currentUserWord = []
         return
+        }
+        
 
     }
     if(currentUserWord.length >=5){
