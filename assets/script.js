@@ -65,8 +65,16 @@ function checkForValidGuess(){
     var wordString = currentUserWord.join("")
     console.log(wordString)
     if(possibleWordGuessesArray.includes(wordString)){
+        topHeader.textContent = "Mike's Wordle!"
         return true
-    }else {return false}
+    }else {
+        console.log("bad guess")
+        topHeader.textContent = "Not a Valid Guess"
+        console.log(topHeader.textContent)
+        setTimeout(function(){}, 3000)
+        //topHeader.textContent = "Mike's Wordle!"
+        return false
+    }
 }
 
 function checkForWin(){
