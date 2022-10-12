@@ -1,4 +1,9 @@
+
+.disable-dbl-tap-zoom {
+    touch-action: manipulation;
+  }
 body{
+    touch-action: manipulation;
     display: block
 }
 .jumbotron-fluid h1{
@@ -6,7 +11,7 @@ body{
     font-size: 30px;
 }
 #top-header{
-    
+
 }
 .letter-container{
     display: flex;
