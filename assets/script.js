@@ -17,19 +17,44 @@ var currentGuess = 0
 var currentUserWord = []
 var currentBoxIndex = 0
 var topHeader = document.getElementById("top-header")
-for (var i = 0; i < 10; i++){
-    console.log(possibleWordGuessesArray[Math.floor(Math.random()*possibleWordGuessesArray.length)])
-}
-var shareButton = document.createElement("button")
-shareButton.setAttribute("id", "answer-example-share-button")
-document.getElementById("top-header").appendChild(shareButton)
+//ten random words
+// // for (var i = 0; i < 10; i++){
+// //     console.log(possibleWordGuessesArray[Math.floor(Math.random()*possibleWordGuessesArray.length)])
+// }
+
+//creating share button
+var shareButton = document.getElementById("answer-example-share-button")
 shareButton.textContent = "test share button"
 
+function addStr(str, index, stringToAdd){
+    return str.substring(0, index) + stringToAdd + str.substring(index, str.length);
+  }
+
+function makeTilesForSharing(){
+    var tilesString = ""
+    for(var i = 0; i < 30; i++){
+        if(document.getElementById("letter-box"+i).classList.contains("custom-green")){
+            console.log("green")
+            tilesString += tiles[0]
+        }else if(document.getElementById("letter-box"+i).classList.contains("custom-orange")){
+            console.log("orange")
+            tilesString += tiles[1]
+        }else if(document.getElementById("letter-box"+i).classList.contains("custom-gray")){
+            console.log("gray")
+            tilesString += tiles[2]
+        }
+        }
+    return tilesString
+}
+
+//Share button
 $('#answer-example-share-button').on('click', () => {
+    var tileText  = makeTilesForSharing()
+    console.log(tileText)
     if (navigator.share) {
       navigator.share({
           title: "Results From Mike's Wordle:",
-          text: '🟩🟨⬜️',
+          text: tileText,
           
         })
         .then(() => console.log('Successful share'))
@@ -93,20 +118,19 @@ function checkForValidGuess(){
         return true
     }else {
         topHeader.textContent = "Not a Valid Guess"
-        setTimeout(function(){}, 3000)
-        //topHeader.textContent = "Mike's Wordle!"
         return false
     }
 }
 
 function checkForWin(){
-    if (currentUserWord[0] == word[0][0]&&currentUserWord[1]==word[1][0]&&currentUserWord[2]==word[2][0] && currentUserWord[3]==word[3][0] && currentUserWord[4]==word[4][0]){
+    if (currentUserWord[0] == word[0][0]&&currentUserWord[1]==word[1][0]&&currentUserWord[2]==word[2][0] && currentUserWord[3]==word[3][0] && currentUserWord[4]==word[4][0]){    
+        document.getElementById("top-header").appendChild(shareButton)
         if(currentGuess == 0){
             topHeader.textContent = "You Won in 1 Guess!!"
         }
         else{
             topHeader.textContent = "You Won in "+(currentGuess+1)+" Guesses!"
-            navigator.share("Share feature coming soon! 🟩🟨⬜️")
+            // navigator.share("Share feature coming soon! 🟩🟨⬜️")
         }
     }
     if(currentGuess >= 6){
@@ -146,9 +170,6 @@ function checkForTrueMatches(){
 
 }
 function checkForOranges(){
-   
-
-    //TODO: shit is all fucked up
     for(var i = 0;i<5;i++){
         if((checkLetterForOrangeAndReturnIndex(currentUserWord[i])[0]==true) && currentUserWord[i] != compareWord[i][0]) {
             var hashtagIndex = checkLetterForOrangeAndReturnIndex(currentUserWord[i])[1]
@@ -168,38 +189,6 @@ function checkForOranges(){
         }
     }
 
-
-
-
-
-
-
-
-
-    // //then for each leter of the user word
-    // for(var i = 0; i<5; i++){
-    //     //check each letter of the compare word
-    //     for(var x = 0; x < 5;x++){
-            // if((currentUserWord[i] == compareWord[x][0]) && (compareWord[x][1] =="0") && (currentUserWord[i] != compareWord[i][0])){
-            //     compareWord[x][1] = "#"
-                // document.getElementById("letter-box"+eval(currentGuess*5+i)).style.backgroundColor = "orange"
-                // document.getElementById("letter-box"+eval(currentGuess*5+i)).style.color = "white"
-                // document.getElementById("letter-box"+eval(currentGuess*5+1)).setAttribute("class","letter-box custom-orange")
-            //     if(document.getElementById("letter-box"+eval(currentGuess*5+i)).className == "letter-box custom-green"){
-                    
-            //     }else{
-            //         document.getElementById("key-"+currentUserWord[i]).style.backgroundColor = "orange"
-            //         document.getElementById("key-"+currentUserWord[i]).style.color = "white"
-            //         document.getElementById("key-"+currentUserWord[i]).setAttribute("class","letter-box custom-orange")
-
-            //     }
-                
-              
-            //  } 
-
-    //     }
-    // }
-
 }
 function checkForGrays(){
     for(var i = 0; i < 5; i++){
@@ -207,9 +196,10 @@ function checkForGrays(){
             document.getElementById("letter-box"+eval(currentGuess*5+i)).className == "letter-box custom-orange")){
 
         }else{
+            document.getElementById("letter-box"+eval(currentGuess*5+i)).setAttribute("class","letter-box custom-gray")
             document.getElementById("letter-box"+eval(currentGuess*5+i)).style.backgroundColor = "gray"
             document.getElementById("letter-box"+eval(currentGuess*5+i)).style.color = "white"
-            // document.getElementById("key-"+currentUserWord[i]).style.backgroundColor = "gray"
+            
 
             if(document.getElementById("key-"+currentUserWord[i]).className == "keyboard-button container custom-green"
             || document.getElementById("key-"+currentUserWord[i]).className == "keyboard-button container custom-orange"){
@@ -273,19 +263,56 @@ document.getElementById("keyboard-container").addEventListener("click", function
     if(currentUserWord.length >=5){
         return
     }
-
+    //if letter button is clicked
     currentBoxIndex = (currentGuess * 5)+currentUserWord.length
     document.getElementById("letter-box"+currentBoxIndex).innerHTML = buttonClicked.innerHTML
     currentUserWord.push(buttonClicked.innerHTML)
-    
-
-
-
-
 
 })
 
-
+//===========================Keyboard event listener===========================================
+document.addEventListener("keydown", function(event){
+    var keyPressed = event.key.toUpperCase()
+    if(keyPressed == "BACKSPACE"){
+        topHeader.textContent = "Mike's Wordle!"
+        if(currentUserWord.length == 0){
+            return
+        }
+        currentUserWord.pop()
+        document.getElementById("letter-box"+currentBoxIndex).innerHTML = ""
+        currentBoxIndex -= 1
+        return
+    }
+    if(keyPressed == "ENTER"){
+        if(currentUserWord.length < 5){
+            return
+        }
+        //check guess against word
+        if(checkForValidGuess()){
+            checkForValidGuess()
+        checkForWin()
+        checkForTrueMatches()
+        checkForOranges()
+        checkForGrays()
+        resetCompareWord()
+        //compareWord = word
+        currentGuess += 1
+        currentUserWord = []
+        return
+        }
+    }
+    if(currentUserWord.length >=5){
+        return
+    }
+    if(querty.includes(keyPressed)){
+        console.log(keyPressed)
+    
+    currentBoxIndex = (currentGuess * 5)+currentUserWord.length
+    document.getElementById("letter-box"+currentBoxIndex).innerHTML = keyPressed
+    currentUserWord.push(keyPressed)
+    }
+    
+})
 //=================================================================================================
 
 drawLetterBoxes()

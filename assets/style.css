@@ -13,6 +13,10 @@ body{
 #top-header{
 
 }
+#answer-example-share-button{
+    color: black;
+    
+}
 .letter-container{
     display: flex;
     padding-top: 5px;
