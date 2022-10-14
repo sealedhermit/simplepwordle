@@ -23,8 +23,8 @@ var topHeader = document.getElementById("top-header")
 // }
 
 //creating share button
-var shareButton = document.getElementById("answer-example-share-button")
-shareButton.textContent = "test share button"
+// var shareButton = document.getElementById("answer-example-share-button")
+// shareButton.textContent = "test share button"
 
 function addStr(str, index, stringToAdd){
     return str.substring(0, index) + stringToAdd + str.substring(index, str.length);
@@ -47,22 +47,22 @@ function makeTilesForSharing(){
     return tilesString
 }
 
-//Share button
-$('#answer-example-share-button').on('click', () => {
-    var tileText  = makeTilesForSharing()
-    console.log(tileText)
-    if (navigator.share) {
-      navigator.share({
-          title: "Results From Mike's Wordle:",
-          text: tileText,
+// //Share button
+// $('#answer-example-share-button').on('click', () => {
+//     var tileText  = makeTilesForSharing()
+//     console.log(tileText)
+//     if (navigator.share) {
+//       navigator.share({
+//           title: "Results From Mike's Wordle:",
+//           text: tileText,
           
-        })
-        .then(() => console.log('Successful share'))
-        .catch((error) => console.log('Error sharing', error));
-    } else {
-      console.log('Share not supported on this browser, do it the old way.');
-    }
-  });
+//         })
+//         .then(() => console.log('Successful share'))
+//         .catch((error) => console.log('Error sharing', error));
+//     } else {
+//       console.log('Share not supported on this browser, do it the old way.');
+//     }
+//   });
 
 function drawLetterBoxes(){
     for(var i = 0; i<30;i++){
@@ -124,7 +124,7 @@ function checkForValidGuess(){
 
 function checkForWin(){
     if (currentUserWord[0] == word[0][0]&&currentUserWord[1]==word[1][0]&&currentUserWord[2]==word[2][0] && currentUserWord[3]==word[3][0] && currentUserWord[4]==word[4][0]){    
-        document.getElementById("top-header").appendChild(shareButton)
+        //  
         if(currentGuess == 0){
             topHeader.textContent = "You Won in 1 Guess!!"
         }
