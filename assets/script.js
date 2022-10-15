@@ -38,7 +38,7 @@ function addStr(str, index, stringToAdd){
   }
 
 function makeTilesForSharing(){
-    var tilesString = "Mike's Wordle #"+currentWordleNumber+"\ns"
+    var tilesString = "Mike's Wordle #"+currentWordleNumber+"\n"
     var count =0
     for(var i = 0; i < 30; i++){
         count += 1
@@ -115,7 +115,7 @@ function MakeBottomRowOfKeyboard(){
 function checkForValidGuess(){
     var wordString = currentUserWord.join("")
     if(possibleWordGuessesArray.includes(wordString)){
-        topHeader.textContent = "Mike's Wordle!"
+        topHeader.textContent = "Mike's Wordle! #"+currentWordleNumber
         return true
     }else {
         topHeader.textContent = "Not a Valid Guess"
