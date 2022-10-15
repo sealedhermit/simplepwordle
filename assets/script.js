@@ -7,8 +7,8 @@ var possibleWordGuessesUnparesed = "TETHS TETRA TETRI TEUCH TEUGH TEWED TEWEL TE
 var possibleWordGuessesArray = possibleWordGuessesUnparesed.split(" ")
 console.log(possibleWordGuessesArray.length)
 
-const word = ["V", "I", "T", "A", "L"]
-var compareWord = [["V","0"], ["I","0"], ["T","0"], ["A","0"], ["L","0"]]
+const word = ["D", "W", "E", "L", "L"]
+var compareWord = [["D","0"], ["W","0"], ["E","0"], ["L","0"], ["L","0"]]
 
 var tiles = "🟩🟨⬜️"
 
@@ -18,9 +18,9 @@ var currentUserWord = []
 var currentBoxIndex = 0
 var topHeader = document.getElementById("top-header")
 //ten random words
-// // for (var i = 0; i < 10; i++){
-// //     console.log(possibleWordGuessesArray[Math.floor(Math.random()*possibleWordGuessesArray.length)])
-// }
+for (var i = 0; i < 10; i++){
+    console.log(possibleWordGuessesArray[Math.floor(Math.random()*possibleWordGuessesArray.length)])
+}
 
 //creating share button
 // var shareButton = document.getElementById("answer-example-share-button")
