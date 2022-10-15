@@ -17,6 +17,8 @@ var currentGuess = 0
 var currentUserWord = []
 var currentBoxIndex = 0
 var topHeader = document.getElementById("top-header")
+var shareButton = document.createElement("button")
+shareButton.setAttribute("id", "share-button")
 //ten random words
 // // for (var i = 0; i < 10; i++){
 // //     console.log(possibleWordGuessesArray[Math.floor(Math.random()*possibleWordGuessesArray.length)])
@@ -47,22 +49,11 @@ function makeTilesForSharing(){
     return tilesString
 }
 
-// //Share button
-// $('#answer-example-share-button').on('click', () => {
-//     var tileText  = makeTilesForSharing()
-//     console.log(tileText)
-//     if (navigator.share) {
-//       navigator.share({
-//           title: "Results From Mike's Wordle:",
-//           text: tileText,
-          
-//         })
-//         .then(() => console.log('Successful share'))
-//         .catch((error) => console.log('Error sharing', error));
-//     } else {
-//       console.log('Share not supported on this browser, do it the old way.');
-//     }
-//   });
+function makeShareButton(){
+    shareButton.textContent = "Share"
+
+    document.getElementById("top-header").appendChild(shareButton)
+}
 
 function drawLetterBoxes(){
     for(var i = 0; i<30;i++){
@@ -127,10 +118,11 @@ function checkForWin(){
         //  
         if(currentGuess == 0){
             topHeader.textContent = "You Won in 1 Guess!!"
+            makeShareButton()
         }
         else{
             topHeader.textContent = "You Won in "+(currentGuess+1)+" Guesses!"
-            // navigator.share("Share feature coming soon! 🟩🟨⬜️")
+            makeShareButton()
         }
     }
     if(currentGuess >= 6){
@@ -268,8 +260,26 @@ document.getElementById("keyboard-container").addEventListener("click", function
     document.getElementById("letter-box"+currentBoxIndex).innerHTML = buttonClicked.innerHTML
     currentUserWord.push(buttonClicked.innerHTML)
 
-})
 
+
+})
+    //=============================================Share button
+    $('#share-button').on('click', () => {
+        console.log("share button clicked")
+        var tileText  = makeTilesForSharing()
+        console.log(tileText)
+        if (navigator.share) {
+          navigator.share({
+              title: "Results From Mike's Wordle:",
+              text: tileText,
+              
+            })
+            .then(() => console.log('Successful share'))
+            .catch((error) => console.log('Error sharing', error));
+        } else {
+          console.log('Share not supported on this browser, do it the old way.');
+        }
+      });
 //===========================Keyboard event listener===========================================
 document.addEventListener("keydown", function(event){
     var keyPressed = event.key.toUpperCase()
