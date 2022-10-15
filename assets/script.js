@@ -10,15 +10,20 @@ console.log(possibleWordGuessesArray.length)
 const word = ["V", "I", "T", "A", "L"]
 var compareWord = [["V","0"], ["I","0"], ["T","0"], ["A","0"], ["L","0"]]
 
-var tiles = "🟩🟨⬜️"
-
 var querty = ["Q", "W", "E", "R", "T","Y", "U","I","O", "P", "A", "S", "D", "F", "G", "H", "J", "K", "L", "ENTER", "Z", "X", "C", "V", "B", "N", "M", "DEL"]
 var currentGuess = 0
 var currentUserWord = []
 var currentBoxIndex = 0
 var topHeader = document.getElementById("top-header")
+
 var shareButton = document.createElement("button")
 shareButton.setAttribute("id", "share-button")
+document.getElementById("top-header").appendChild(shareButton)
+shareButton.style.display = "none"
+
+var greenTile = "🟩"
+var orangeTile = "🟨"
+var whiteTile = "⬜"
 //ten random words
 // // for (var i = 0; i < 10; i++){
 // //     console.log(possibleWordGuessesArray[Math.floor(Math.random()*possibleWordGuessesArray.length)])
@@ -34,24 +39,33 @@ function addStr(str, index, stringToAdd){
 
 function makeTilesForSharing(){
     var tilesString = ""
+    var count =0
     for(var i = 0; i < 30; i++){
+        count += 1
         if(document.getElementById("letter-box"+i).classList.contains("custom-green")){
             console.log("green")
-            tilesString += tiles[0]
+            tilesString += greenTile
         }else if(document.getElementById("letter-box"+i).classList.contains("custom-orange")){
             console.log("orange")
-            tilesString += tiles[1]
+            tilesString += orangeTile
         }else if(document.getElementById("letter-box"+i).classList.contains("custom-gray")){
             console.log("gray")
-            tilesString += tiles[2]
+            tilesString += whiteTile
+        }else {
+            console.log(tilesString)
+            return tilesString
+        }
+        if(count % 5 == 0){
+            tilesString = tilesString+"\n"
         }
         }
+
     return tilesString
 }
 
 function makeShareButton(){
     shareButton.textContent = "Share"
-
+    shareButton.style.display = "inline"
     document.getElementById("top-header").appendChild(shareButton)
 }
 
@@ -265,7 +279,7 @@ document.getElementById("keyboard-container").addEventListener("click", function
 })
     //=============================================Share button
     $('#share-button').on('click', () => {
-        console.log("share button clicked")
+        console.log("orange tile: 🟨")
         var tileText  = makeTilesForSharing()
         console.log(tileText)
         if (navigator.share) {
