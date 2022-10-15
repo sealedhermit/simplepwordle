@@ -24,6 +24,7 @@ shareButton.style.display = "none"
 var greenTile = "🟩"
 var orangeTile = "🟨"
 var whiteTile = "⬜"
+var currentWordleNumber = 4
 //ten random words
 for (var i = 0; i < 10; i++){
     console.log(possibleWordGuessesArray[Math.floor(Math.random()*possibleWordGuessesArray.length)])
@@ -38,7 +39,7 @@ function addStr(str, index, stringToAdd){
   }
 
 function makeTilesForSharing(){
-    var tilesString = ""
+    var tilesString = "Mike's Wordle #"+currentWordleNumber+"\ns"
     var count =0
     for(var i = 0; i < 30; i++){
         count += 1
