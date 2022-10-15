@@ -13,7 +13,9 @@ var querty = ["Q", "W", "E", "R", "T","Y", "U","I","O", "P", "A", "S", "D", "F",
 var currentGuess = 0
 var currentUserWord = []
 var currentBoxIndex = 0
+var currentWordleNumber = 4
 var topHeader = document.getElementById("top-header")
+topHeader.textContent = "Mike's Wordle! #"+currentWordleNumber
 
 var shareButton = document.createElement("button")
 shareButton.setAttribute("id", "share-button")
@@ -23,7 +25,7 @@ shareButton.style.display = "none"
 var greenTile = "🟩"
 var orangeTile = "🟨"
 var whiteTile = "⬜"
-var currentWordleNumber = 4
+
 //ten random words
 // for (var i = 0; i < 10; i++){
 //     console.log(possibleWordGuessesArray[Math.floor(Math.random()*possibleWordGuessesArray.length)])
@@ -134,9 +136,9 @@ function checkForWin(){
             topHeader.textContent = "You Won in "+(currentGuess+1)+" Guesses!"
             makeShareButton()
         }
-    }
-    if(currentGuess >= 6){
-        topHeader.textContent = "You Lose!! Bummer!"
+    }else if(currentGuess >= 5){
+            topHeader.textContent = "You Lose!! Bummer!"
+             makeShareButton()
     }
 }
 function checkLetterForOrangeAndReturnIndex(letter){
@@ -232,7 +234,7 @@ document.getElementById("keyboard-container").addEventListener("click", function
         return
     }
     if(buttonClicked.innerHTML == "DEL"){
-        topHeader.textContent = "Mike's Wordle!"
+        topHeader.textContent = "Mike's Wordle! #"+currentWordleNumber
         if(currentUserWord.length == 0){
             return
         }
@@ -292,7 +294,7 @@ document.getElementById("keyboard-container").addEventListener("click", function
 document.addEventListener("keydown", function(event){
     var keyPressed = event.key.toUpperCase()
     if(keyPressed == "BACKSPACE"){
-        topHeader.textContent = "Mike's Wordle!"
+        topHeader.textContent = "Mike's Wordle! #"+currentWordleNumber
         if(currentUserWord.length == 0){
             return
         }
