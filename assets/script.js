@@ -7,6 +7,7 @@ var possibleWordGuessesUnparesed = "TETHS TETRA TETRI TEUCH TEUGH TEWED TEWEL TE
 var possibleWordGuessesArray = possibleWordGuessesUnparesed.split(" ")
 
 var wordAsString = "BEIGE"
+var currentWordleNumber = 5  //<---------Change wordle number here
 word = []
 var word = wordAsString.split("")
 var compareWord = [["!","0"], ["!","0"], ["!","0"], ["!","0"], ["!","0"]]
@@ -14,7 +15,7 @@ for(var i = 0; i < word.length; i++){
     compareWord[i][0] = word[i]
 }
 console.log(compareWord)
-var currentWordleNumber = 5  //<---------Change wordle number here
+
 
 var oldWordleNumber = JSON.parse(localStorage.getItem("wordleNumber"))
 console.log(currentWordleNumber, oldWordleNumber)
@@ -320,24 +321,6 @@ function loadGuess(){
 
 
 }
-//     var tilesString = "Mike's Wordle #"+currentWordleNumber+"\n"
-//     var count =0
-//     for(var i = 0; i < 30; i++){
-//         count += 1
-//         if(document.getElementById("letter-box"+i).classList.contains("custom-green")){
-//             tilesString += greenTile
-//         }else if(document.getElementById("letter-box"+i).classList.contains("custom-orange")){
-//             tilesString += orangeTile
-//         }else if(document.getElementById("letter-box"+i).classList.contains("custom-gray")){
-//             tilesString += whiteTile
-//         }else {
-//             return tilesString
-//         }
-//         if(count % 5 == 0){
-//             tilesString = tilesString+"\n"
-//         }
-//         }
-// }
 
 //================================When buttons are clicked======
 
