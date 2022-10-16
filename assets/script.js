@@ -7,12 +7,16 @@ var possibleWordGuessesUnparesed = "TETHS TETRA TETRI TEUCH TEUGH TEWED TEWEL TE
 var possibleWordGuessesArray = possibleWordGuessesUnparesed.split(" ")
 
 var wordAsString = "BEIGE"
-const word = ["B", "E", "I", "G", "E"]
-var compareWord = [["B","0"], ["E","0"], ["I","0"], ["G","0"], ["E","0"]]
-var currentWordleNumber = 5
+word = []
+var word = wordAsString.split("")
+var compareWord = [["!","0"], ["!","0"], ["!","0"], ["!","0"], ["!","0"]]
+for(var i = 0; i < word.length; i++){
+    compareWord[i][0] = word[i]
+}
+console.log(compareWord)
+var currentWordleNumber = 5  //<---------Change wordle number here
 
 var oldWordleNumber = JSON.parse(localStorage.getItem("wordleNumber"))
-//TODO: thought the below function would make it only reset storage when the wordle number changes, but somehow it changes in local storage immediately
 console.log(currentWordleNumber, oldWordleNumber)
 if(currentWordleNumber != oldWordleNumber){
     localStorage.clear()
