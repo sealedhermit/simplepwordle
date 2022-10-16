@@ -35,10 +35,6 @@ var whiteTile = "⬜"
 // var shareButton = document.getElementById("answer-example-share-button")
 // shareButton.textContent = "test share button"
 
-function addStr(str, index, stringToAdd){
-    return str.substring(0, index) + stringToAdd + str.substring(index, str.length);
-  }
-
 function makeTilesForSharing(){
     var tilesString = "Mike's Wordle #"+currentWordleNumber+"\n"
     var count =0
@@ -127,7 +123,8 @@ function checkForValidGuess(){
 
 function checkForWin(){
     if (currentUserWord[0] == word[0][0]&&currentUserWord[1]==word[1][0]&&currentUserWord[2]==word[2][0] && currentUserWord[3]==word[3][0] && currentUserWord[4]==word[4][0]){    
-        //  
+        removeKeyboardListener()
+        removeClickListener()
         if(currentGuess == 0){
             topHeader.textContent = "You Won in 1 Guess!!"
             makeShareButton()
@@ -223,12 +220,7 @@ function resetCompareWord(){
         compareWord[i][1] = "0"
     }
 }
-
-
-
-//================================When buttons are clicked======
-
-document.getElementById("keyboard-container").addEventListener("click", function(event){
+function buttonsClicked (e){
     var buttonClicked = event.target
     if(buttonClicked.tagName != "BUTTON"){
         return
@@ -271,10 +263,15 @@ document.getElementById("keyboard-container").addEventListener("click", function
     currentBoxIndex = (currentGuess * 5)+currentUserWord.length
     document.getElementById("letter-box"+currentBoxIndex).innerHTML = buttonClicked.innerHTML
     currentUserWord.push(buttonClicked.innerHTML)
+}
+function removeClickListener(){
+    document.getElementById("keyboard-container").removeEventListener("click", buttonsClicked)
+}
 
 
+//================================When buttons are clicked======
 
-})
+document.getElementById("keyboard-container").addEventListener("click", buttonsClicked)
     //=============================================Share button
     $('#share-button').on('click', () => {
         var tileText  = makeTilesForSharing()
@@ -291,7 +288,7 @@ document.getElementById("keyboard-container").addEventListener("click", function
         }
       });
 //===========================Keyboard event listener===========================================
-document.addEventListener("keydown", function(event){
+function keyboardLetterPress(e){
     var keyPressed = event.key.toUpperCase()
     if(keyPressed == "BACKSPACE"){
         topHeader.textContent = "Mike's Wordle! #"+currentWordleNumber
@@ -330,8 +327,11 @@ document.addEventListener("keydown", function(event){
     document.getElementById("letter-box"+currentBoxIndex).innerHTML = keyPressed
     currentUserWord.push(keyPressed)
     }
-    
-})
+}
+function removeKeyboardListener(){
+    document.removeEventListener("keydown", keyboardLetterPress)
+}
+document.addEventListener("keydown", keyboardLetterPress)
 //=================================================================================================
 
 drawLetterBoxes()
