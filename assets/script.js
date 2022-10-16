@@ -35,10 +35,6 @@ var whiteTile = "⬜"
 // var shareButton = document.getElementById("answer-example-share-button")
 // shareButton.textContent = "test share button"
 
-function addStr(str, index, stringToAdd){
-    return str.substring(0, index) + stringToAdd + str.substring(index, str.length);
-  }
-
 function makeTilesForSharing(){
     var tilesString = "Mike's Wordle #"+currentWordleNumber+"\n"
     var count =0
@@ -127,7 +123,7 @@ function checkForValidGuess(){
 
 function checkForWin(){
     if (currentUserWord[0] == word[0][0]&&currentUserWord[1]==word[1][0]&&currentUserWord[2]==word[2][0] && currentUserWord[3]==word[3][0] && currentUserWord[4]==word[4][0]){    
-        //  
+        removeKeyboardListener()
         if(currentGuess == 0){
             topHeader.textContent = "You Won in 1 Guess!!"
             makeShareButton()
@@ -291,7 +287,7 @@ document.getElementById("keyboard-container").addEventListener("click", function
         }
       });
 //===========================Keyboard event listener===========================================
-document.addEventListener("keydown", function(event){
+function keyboardLetterPress(e){
     var keyPressed = event.key.toUpperCase()
     if(keyPressed == "BACKSPACE"){
         topHeader.textContent = "Mike's Wordle! #"+currentWordleNumber
@@ -330,8 +326,11 @@ document.addEventListener("keydown", function(event){
     document.getElementById("letter-box"+currentBoxIndex).innerHTML = keyPressed
     currentUserWord.push(keyPressed)
     }
-    
-})
+}
+function removeKeyboardListener(){
+    document.removeEventListener("keydown", keyboardLetterPress)
+}
+document.addEventListener("keydown", keyboardLetterPress)
 //=================================================================================================
 
 drawLetterBoxes()
