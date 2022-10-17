@@ -7,7 +7,7 @@ var possibleWordGuessesUnparesed = "TETHS TETRA TETRI TEUCH TEUGH TEWED TEWEL TE
 var possibleWordGuessesArray = possibleWordGuessesUnparesed.split(" ")
 
 var wordAsString = "CRAZE"
-var currentWordleNumber = 6  //<---------Change wordle number here
+var currentWordleNumber = 06  //<---------Change wordle number here
 word = []
 var word = wordAsString.split("")
 var compareWord = [["!","0"], ["!","0"], ["!","0"], ["!","0"], ["!","0"]]
@@ -16,16 +16,7 @@ for(var i = 0; i < word.length; i++){
 }
 
 
-// var oldWordleNumber = JSON.parse(localStorage.getItem("wordleNumber"))
-// console.log(currentWordleNumber, oldWordleNumber)
-// if(currentWordleNumber != oldWordleNumber){
-//     localStorage.clear()
-//     drawLetterBoxes()
-// makeTopRowOFKeyboard()
-// makeMiddleRowOfKeyboard()
-// MakeBottomRowOfKeyboard()
-// loadGuess()
-// }
+
 
 
 var querty = ["Q", "W", "E", "R", "T","Y", "U","I","O", "P", "A", "S", "D", "F", "G", "H", "J", "K", "L", "ENTER", "Z", "X", "C", "V", "B", "N", "M", "DEL"]
@@ -33,7 +24,18 @@ var currentGuess = 0
 var currentUserWord = []
 var currentBoxIndex = 0
 
-
+var oldWordleNumber = JSON.parse(localStorage.getItem("wordleNumber"))
+console.log(currentWordleNumber, oldWordleNumber)
+if(currentWordleNumber != oldWordleNumber){
+    localStorage.clear()
+    
+    // drawLetterBoxes()
+    // "hello"
+    // makeTopRowOFKeyboard()
+    // makeMiddleRowOfKeyboard()
+    // MakeBottomRowOfKeyboard()
+    // loadGuess()
+    }
 
 var topHeader = document.getElementById("top-header")
 topHeader.textContent = "Mike's Wordle! #"+currentWordleNumber
@@ -48,8 +50,8 @@ var orangeTile = "🟨"
 var whiteTile = "⬜"
 
 //ten random words
-for (var i = 0; i < 10; i++){
-    console.log(possibleWordGuessesArray[Math.floor(Math.random()*possibleWordGuessesArray.length)])}
+// for (var i = 0; i < 10; i++){
+//     console.log(possibleWordGuessesArray[Math.floor(Math.random()*possibleWordGuessesArray.length)])}
 
 
 function makeTilesForSharing(){
@@ -395,7 +397,7 @@ drawLetterBoxes()
 makeTopRowOFKeyboard()
 makeMiddleRowOfKeyboard()
 MakeBottomRowOfKeyboard()
-// loadGuess()
+loadGuess()
 
 
 })
