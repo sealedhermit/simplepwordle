@@ -7,7 +7,7 @@ var possibleWordGuessesUnparesed = "TETHS TETRA TETRI TEUCH TEUGH TEWED TEWEL TE
 var possibleWordGuessesArray = possibleWordGuessesUnparesed.split(" ")
 
 var wordAsString = "CRAZE"
-var currentWordleNumber = 06  //<---------Change wordle number here
+var currentWordleNumber = 6  //<---------Change wordle number here
 word = []
 var word = wordAsString.split("")
 var compareWord = [["!","0"], ["!","0"], ["!","0"], ["!","0"], ["!","0"]]
@@ -28,7 +28,7 @@ var oldWordleNumber = JSON.parse(localStorage.getItem("wordleNumber"))
 console.log(currentWordleNumber, oldWordleNumber)
 if(currentWordleNumber != oldWordleNumber){
     localStorage.clear()
-    
+    console.log("storage clear")
     // drawLetterBoxes()
     // "hello"
     // makeTopRowOFKeyboard()
@@ -310,7 +310,7 @@ function loadGuess(){
                 checkForOranges()
                 checkForGrays()
                 //insert local storage here
-                // storeGuess()
+                storeGuess()
                 resetCompareWord()
                 //compareWord = word
                 currentGuess += 1
@@ -369,7 +369,7 @@ function keyboardLetterPress(e){
         checkForTrueMatches()
         checkForOranges()
         checkForGrays()
-        // storeGuess()
+        storeGuess()
         resetCompareWord()
         //compareWord = word
         currentGuess += 1
@@ -397,7 +397,7 @@ drawLetterBoxes()
 makeTopRowOFKeyboard()
 makeMiddleRowOfKeyboard()
 MakeBottomRowOfKeyboard()
-// loadGuess()
+loadGuess()
 
 
 })
