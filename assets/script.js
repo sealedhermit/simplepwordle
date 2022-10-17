@@ -310,7 +310,7 @@ function loadGuess(){
                 checkForOranges()
                 checkForGrays()
                 //insert local storage here
-                storeGuess()
+                // storeGuess()
                 resetCompareWord()
                 //compareWord = word
                 currentGuess += 1
@@ -369,7 +369,7 @@ function keyboardLetterPress(e){
         checkForTrueMatches()
         checkForOranges()
         checkForGrays()
-        storeGuess()
+        // storeGuess()
         resetCompareWord()
         //compareWord = word
         currentGuess += 1
@@ -397,7 +397,7 @@ drawLetterBoxes()
 makeTopRowOFKeyboard()
 makeMiddleRowOfKeyboard()
 MakeBottomRowOfKeyboard()
-loadGuess()
+// loadGuess()
 
 
 })
