@@ -393,7 +393,7 @@ drawLetterBoxes()
 makeTopRowOFKeyboard()
 makeMiddleRowOfKeyboard()
 MakeBottomRowOfKeyboard()
-// loadGuess()
+loadGuess()
 
 
 })
