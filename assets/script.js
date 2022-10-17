@@ -15,10 +15,6 @@ for(var i = 0; i < word.length; i++){
     compareWord[i][0] = word[i]
 }
 
-
-
-
-
 var querty = ["Q", "W", "E", "R", "T","Y", "U","I","O", "P", "A", "S", "D", "F", "G", "H", "J", "K", "L", "ENTER", "Z", "X", "C", "V", "B", "N", "M", "DEL"]
 var currentGuess = 0
 var currentUserWord = []
@@ -262,7 +258,7 @@ function buttonsClicked (e){
         checkForOranges()
         checkForGrays()
         //insert local storage here
-        // storeGuess()
+        storeGuess()
         resetCompareWord()
         //compareWord = word
         currentGuess += 1
