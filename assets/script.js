@@ -260,7 +260,7 @@ function buttonsClicked (e){
         checkForOranges()
         checkForGrays()
         //insert local storage here
-        storeGuess()
+        // storeGuess()
         resetCompareWord()
         //compareWord = word
         currentGuess += 1
@@ -395,7 +395,7 @@ drawLetterBoxes()
 makeTopRowOFKeyboard()
 makeMiddleRowOfKeyboard()
 MakeBottomRowOfKeyboard()
-loadGuess()
+// loadGuess()
 
 
 })
