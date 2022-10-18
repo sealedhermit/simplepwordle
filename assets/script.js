@@ -23,12 +23,6 @@ var currentBoxIndex = 0
 var oldWordleNumber = JSON.parse(localStorage.getItem("wordleNumber"))
 if(currentWordleNumber != oldWordleNumber){
     localStorage.clear()
-    // drawLetterBoxes()
-    // "hello"
-    // makeTopRowOFKeyboard()
-    // makeMiddleRowOfKeyboard()
-    // MakeBottomRowOfKeyboard()
-    // loadGuess()
     }
 
 var topHeader = document.getElementById("top-header")
@@ -156,6 +150,7 @@ function checkLetterForOrangeAndReturnIndex(letter){
     }
     return [false, false]
 }
+//color code green squares after guess
 function checkForTrueMatches(){
     for(var i = 0;i<5;i++){
         document.getElementById("letter-box"+eval(currentGuess*5+i)).setAttribute("class", "letter-box") //
@@ -178,6 +173,7 @@ function checkForTrueMatches(){
     }
 
 }
+//color code orange quares after guess, but don't change keyboard button color if it was already green
 function checkForOranges(){
     for(var i = 0;i<5;i++){
         if((checkLetterForOrangeAndReturnIndex(currentUserWord[i])[0]==true) && currentUserWord[i] != compareWord[i][0]) {
@@ -199,6 +195,7 @@ function checkForOranges(){
     }
 
 }
+//color code gray squares, but dont override orange or green keyboard buttons
 function checkForGrays(){
     for(var i = 0; i < 5; i++){
         if((document.getElementById("letter-box"+eval(currentGuess*5+i)).className == "letter-box custom-green"||
@@ -223,6 +220,7 @@ function checkForGrays(){
         }
     }
 }
+//each guess starts with a fresh compare word
 function resetCompareWord(){
     for (var i = 0; i< 5; i++){
         compareWord[i][1] = "0"
@@ -233,6 +231,7 @@ function buttonsClicked (e){
     if(buttonClicked.tagName != "BUTTON"){
         return
     }
+    //delete button
     if(buttonClicked.innerHTML == "DEL"){
         topHeader.textContent = "Mike's Wordle! #"+currentWordleNumber
         if(currentUserWord.length == 0){
@@ -243,6 +242,7 @@ function buttonsClicked (e){
         currentBoxIndex -= 1
         return
     }
+    //enter button
     if(buttonClicked.innerHTML == "ENTER"){
 
         if(currentUserWord.length < 5){
@@ -320,7 +320,7 @@ function loadGuess(){
 
 }
 
-//================================When buttons are clicked======
+//================================screen click event listener======
 
 document.getElementById("keyboard-container").addEventListener("click", buttonsClicked)
     //=============================================Share button
@@ -355,7 +355,7 @@ function keyboardLetterPress(e){
         if(currentUserWord.length < 5){
             return
         }
-        //check guess against word
+        //check guess against compare wordword
         if(checkForValidGuess()){
             checkForValidGuess()
         checkForWin()
@@ -384,7 +384,7 @@ function removeKeyboardListener(){
     document.removeEventListener("keydown", keyboardLetterPress)
 }
 document.addEventListener("keydown", keyboardLetterPress)
-//=================================================================================================
+//==================================Page Laod===========================================================
 
 drawLetterBoxes()
 makeTopRowOFKeyboard()
