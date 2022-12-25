@@ -2,8 +2,8 @@
 
 
 var possibleWordGuessesArray = possibleWordGuessesUnparesed.split(" ")
-var wordAsString = "WRECK"
-var currentWordleNumber = 72  //<---------Change wordle number here
+var wordAsString = "PLAZA"
+var currentWordleNumber = 73  //<---------Change wordle number here
 
 
 if (usedWords.includes(wordAsString)){
