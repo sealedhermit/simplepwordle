@@ -2,8 +2,8 @@
 
 
 let possibleWordGuessesArray = possibleWordGuessesUnparesed.split(" ")
-let wordAsString = "PLAZA"
-let currentWordleNumber = 73  //<---------Change wordle number here
+let wordAsString = "MIMIC"
+let currentWordleNumber = 74  //<---------Change wordle number here
 
 
 if (usedWords.includes(wordAsString)){
