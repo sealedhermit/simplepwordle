@@ -2,8 +2,8 @@
 
 
 let possibleWordGuessesArray = possibleWordGuessesUnparesed.split(" ")
-let wordAsString = "MIMIC"
-let currentWordleNumber = 74  //<---------Change wordle number here
+let wordAsString = "FETCH"
+let currentWordleNumber = 75  //<---------Change wordle number here
 
 
 if (usedWords.includes(wordAsString)){
@@ -11,6 +11,7 @@ if (usedWords.includes(wordAsString)){
 } else {console.log(`${wordAsString} has not been used!`)}
 let word = []
 word = wordAsString.split("")
+  
 let compareWord = [["!","0"], ["!","0"], ["!","0"], ["!","0"], ["!","0"]]
 for(let i = 0; i < word.length; i++){
     compareWord[i][0] = word[i]
