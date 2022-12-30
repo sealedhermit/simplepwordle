@@ -35,13 +35,16 @@ shareButton.setAttribute("id", "share-button")
 document.getElementById("top-header").appendChild(shareButton)
 shareButton.style.display = "none"
 
-const greenTile = "🟩"
-const orangeTile = "🟨"
-const whiteTile = "⬜"
+
 
 //fifteen random words
 for (let i = 0; i < 15; i++){
-    console.log(possibleWordGuessesArray[Math.floor(Math.random()*possibleWordGuessesArray.length)])}
+    console.log(possibleWordGuessesArray[Math.floor(Math.random()*possibleWordGuessesArray.length)])
+}
+
+const greenTile = "🟩"
+const orangeTile = "🟨"
+const whiteTile = "⬜"
     
 function makeTilesForSharing(){
     let tilesString = "Mike's Wordle #"+currentWordleNumber+"\n"
@@ -60,8 +63,7 @@ function makeTilesForSharing(){
         if(count % 5 == 0){
             tilesString = tilesString+"\n"
         }
-        }
-
+    }
     return tilesString
 }
 function makeShareButton(){
@@ -331,7 +333,6 @@ document.getElementById("keyboard-container").addEventListener("click", buttonsC
           navigator.share({
               title: "Results From Mike's Wordle:",
               text: tileText,
-              
             })
             .then(() => console.log('Successful share'))
             .catch((error) => console.log('Error sharing', error));
