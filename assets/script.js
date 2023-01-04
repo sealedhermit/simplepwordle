@@ -133,15 +133,15 @@ function checkForWin(){
         removeKeyboardListener()
         removeClickListener()
         if(currentGuess == 0){
-            topHeader.textContent = "You Won in 1 Guess!!"
+            topHeader.innerHTML = "You Won in 1 Guess!!<br/>"
             makeShareButton()
         }
         else{
-            topHeader.textContent = "You Won in "+(currentGuess+1)+" Guesses!"
+            topHeader.innerHTML = "You Won in "+(currentGuess+1)+" Guesses!<br/>"
             makeShareButton()
         }
     }else if(currentGuess >= 5){
-            topHeader.textContent = "You Lose!! Bummer! The word was "+wordAsString
+            topHeader.innerHTML = "You Lose!! Bummer! The word was "+wordAsString+'<br/>'
              makeShareButton()
     }
 }
