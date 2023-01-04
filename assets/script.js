@@ -141,7 +141,7 @@ function checkForWin(){
             makeShareButton()
         }
     }else if(currentGuess >= 5){
-            topHeader.textContent = "You Lose!! Bummer!"
+            topHeader.textContent = "You Lose!! Bummer! The word was "+wordAsString
              makeShareButton()
     }
 }
