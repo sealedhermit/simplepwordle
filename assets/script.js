@@ -2,8 +2,8 @@
 
 
 let possibleWordGuessesArray = possibleWordGuessesUnparesed.split(" ")
-let wordAsString = "FRUIT"
-let currentWordleNumber = 90  //<---------Change wordle number here
+let wordAsString = "LIMBO"
+let currentWordleNumber = 91  //<---------Change wordle number here
 
 
 if (usedWords.includes(wordAsString)){
