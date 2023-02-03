@@ -2,8 +2,8 @@
 
 
 let possibleWordGuessesArray = possibleWordGuessesUnparesed.split(" ")
-let wordAsString = "ATLAS"
-let currentWordleNumber = 100  //<---------Change wordle number here
+let wordAsString = "MODEL"
+let currentWordleNumber = 101  //<---------Change wordle number here
 
 
 if (usedWords.includes(wordAsString)){
