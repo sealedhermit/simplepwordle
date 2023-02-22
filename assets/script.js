@@ -2,8 +2,8 @@
 
 
 let possibleWordGuessesArray = possibleWordGuessesUnparesed.split(" ")
-let wordAsString = "SPREE"
-let currentWordleNumber = 117  //<---------Change wordle number here
+let wordAsString = "VAGUE"
+let currentWordleNumber = 118  //<---------Change wordle number here
 
 
 if (usedWords.includes(wordAsString)){
