@@ -2,8 +2,8 @@
 
 
 let possibleWordGuessesArray = possibleWordGuessesUnparesed.split(" ")
-let wordAsString = "LAGER"
-let currentWordleNumber = 131  //<---------Change wordle number here
+let wordAsString = "ENEMA"
+let currentWordleNumber = 132  //<---------Change wordle number here
 
 
 if (usedWords.includes(wordAsString)){
