@@ -2,8 +2,8 @@
 
 
 let possibleWordGuessesArray = possibleWordGuessesUnparesed.split(" ")
-let wordAsString = "WREAK"
-let currentWordleNumber = 134  //<---------Change wordle number here
+let wordAsString = "SPAWN"
+let currentWordleNumber = 135  //<---------Change wordle number here
 
 
 if (usedWords.includes(wordAsString)){
