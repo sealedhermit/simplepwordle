@@ -2,8 +2,8 @@
 
 
 let possibleWordGuessesArray = possibleWordGuessesUnparesed.split(" ")
-let wordAsString = "SIEGE"
-let currentWordleNumber = 167 //<---------Change wordle number here
+let wordAsString = "BRAWN"
+let currentWordleNumber = 168 //<---------Change wordle number here
 
 
 if (usedWords.includes(wordAsString)){
