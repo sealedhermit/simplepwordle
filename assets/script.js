@@ -2,8 +2,8 @@
 
 
 let possibleWordGuessesArray = possibleWordGuessesUnparesed.split(" ")
-let wordAsString = "CURSE"
-let currentWordleNumber = 175 //<---------Change wordle number here
+let wordAsString = "ENACT"
+let currentWordleNumber = 176 //<---------Change wordle number here
 
 
 if (usedWords.includes(wordAsString)){
