@@ -2,8 +2,8 @@
 
 
 let possibleWordGuessesArray = possibleWordGuessesUnparesed.split(" ")
-let wordAsString = "UNTIE"
-let currentWordleNumber = 177 //<---------Change wordle number here
+let wordAsString = "IMPLY"
+let currentWordleNumber = 178 //<---------Change wordle number here
 
 
 if (usedWords.includes(wordAsString)){
