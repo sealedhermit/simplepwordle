@@ -2,8 +2,8 @@
 
 
 let possibleWordGuessesArray = possibleWordGuessesUnparesed.split(" ")
-let wordAsString = "LOGIC"
-let currentWordleNumber = 183 //<---------Change wordle number here
+let wordAsString = "GNOME"
+let currentWordleNumber = 184 //<---------Change wordle number here
 
 
 if (usedWords.includes(wordAsString)){
