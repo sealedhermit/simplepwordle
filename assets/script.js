@@ -28,7 +28,7 @@ if(currentWordleNumber != oldWordleNumber){
     }
 
 let topHeader = document.getElementById("top-header")
-topHeader.textContent = "Mike's (Birthday) Wordle! #"+currentWordleNumber
+topHeader.textContent = "Mike's Wordle! #"+currentWordleNumber
 
 let shareButton = document.createElement("button")
 shareButton.setAttribute("id", "share-button")
