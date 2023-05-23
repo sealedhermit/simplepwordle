@@ -2,8 +2,8 @@
 
 
 let possibleWordGuessesArray = possibleWordGuessesUnparesed.split(" ")
-let wordAsString = "FIBER"
-let currentWordleNumber = 192 //<---------Change wordle number here
+let wordAsString = "TABOO"
+let currentWordleNumber = 193 //<---------Change wordle number here
 
 
 if (usedWords.includes(wordAsString)){
