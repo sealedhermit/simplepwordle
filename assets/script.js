@@ -2,8 +2,8 @@
 
 
 let possibleWordGuessesArray = possibleWordGuessesUnparesed.split(" ")
-let wordAsString = "MERIT"
-let currentWordleNumber = 202 //<---------Change wordle number here
+let wordAsString = "VIRUS"
+let currentWordleNumber = 203 //<---------Change wordle number here
 
 
 if (usedWords.includes(wordAsString)){
@@ -25,7 +25,7 @@ let currentBoxIndex = 0
 let oldWordleNumber = JSON.parse(localStorage.getItem("wordleNumber"))
 if(currentWordleNumber != oldWordleNumber){
     localStorage.clear()
-    }
+}
 
 let topHeader = document.getElementById("top-header")
 topHeader.textContent = "Mike's Wordle! #"+currentWordleNumber
