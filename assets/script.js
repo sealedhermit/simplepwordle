@@ -156,15 +156,15 @@ function checkLetterForOrangeAndReturnIndex(letter){
 //color code green squares after guess
 function checkForTrueMatches(){
     for(let i = 0;i<5;i++){
-        document.getElementById("letter-box"+eval(currentGuess*5+i)).setAttribute("class", "letter-box") //
+        document.getElementById("letter-box"+(currentGuess*5+i)).setAttribute("class", "letter-box") //
     }
     for (let i = 0; i < 5;i++){
 
         if(currentUserWord[i] == compareWord[i][0]){
             compareWord[i][1] = "*"
-            document.getElementById("letter-box"+eval(currentGuess*5+i)).setAttribute("class", "letter-box custom-green")
-            document.getElementById("letter-box"+eval(currentGuess*5+i)).style.backgroundColor = "green"
-            document.getElementById("letter-box"+eval(currentGuess*5+i)).style.color = "white"
+            document.getElementById("letter-box"+(currentGuess*5+i)).setAttribute("class", "letter-box custom-green")
+            document.getElementById("letter-box"+(currentGuess*5+i)).style.backgroundColor = "green"
+            document.getElementById("letter-box"+(currentGuess*5+i)).style.color = "white"
 
 
             document.getElementById("key-"+currentUserWord[i]).style.backgroundColor = "green"
@@ -183,9 +183,9 @@ function checkForOranges(){
             let hashtagIndex = checkLetterForOrangeAndReturnIndex(currentUserWord[i])[1]
             
             compareWord[hashtagIndex][1] = "#"
-            document.getElementById("letter-box"+eval(currentGuess*5+i)).style.backgroundColor = "orange"
-            document.getElementById("letter-box"+eval(currentGuess*5+i)).style.color = "white"
-            document.getElementById("letter-box"+eval(currentGuess*5+i)).setAttribute("class","letter-box custom-orange")
+            document.getElementById("letter-box"+(currentGuess*5+i)).style.backgroundColor = "orange"
+            document.getElementById("letter-box"+(currentGuess*5+i)).style.color = "white"
+            document.getElementById("letter-box"+(currentGuess*5+i)).setAttribute("class","letter-box custom-orange")
             if(document.getElementById("key-"+currentUserWord[i]).className == "keyboard-button container custom-green"){
                     
             }else{
@@ -201,13 +201,13 @@ function checkForOranges(){
 //color code gray squares, but dont override orange or green keyboard buttons
 function checkForGrays(){
     for(let i = 0; i < 5; i++){
-        if((document.getElementById("letter-box"+eval(currentGuess*5+i)).className == "letter-box custom-green"||
-            document.getElementById("letter-box"+eval(currentGuess*5+i)).className == "letter-box custom-orange")){
+        if((document.getElementById("letter-box"+(currentGuess*5+i)).className == "letter-box custom-green"||
+            document.getElementById("letter-box"+(currentGuess*5+i)).className == "letter-box custom-orange")){
 
         }else{
-            document.getElementById("letter-box"+eval(currentGuess*5+i)).setAttribute("class","letter-box custom-gray")
-            document.getElementById("letter-box"+eval(currentGuess*5+i)).style.backgroundColor = "gray"
-            document.getElementById("letter-box"+eval(currentGuess*5+i)).style.color = "white"
+            document.getElementById("letter-box"+(currentGuess*5+i)).setAttribute("class","letter-box custom-gray")
+            document.getElementById("letter-box"+(currentGuess*5+i)).style.backgroundColor = "gray"
+            document.getElementById("letter-box"+(currentGuess*5+i)).style.color = "white"
             
 
             if(document.getElementById("key-"+currentUserWord[i]).className == "keyboard-button container custom-green"
