@@ -2,8 +2,8 @@
 
 
 let possibleWordGuessesArray = possibleWordGuessesUnparesed.split(" ")
-let wordAsString = "BLIMP"
-let currentWordleNumber = 217 //<---------Change wordle number here
+let wordAsString = "SLURP"
+let currentWordleNumber = 218 //<---------Change wordle number here
 
 
 if (usedWords.includes(wordAsString)){
