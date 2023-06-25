@@ -2,8 +2,8 @@
 
 
 let possibleWordGuessesArray = possibleWordGuessesUnparesed.split(" ")
-let wordAsString = "IMAGE"
-let currentWordleNumber = 220 //<---------Change wordle number here
+let wordAsString = "WIDTH"
+let currentWordleNumber = 221 //<---------Change wordle number here
 
 
 if (usedWords.includes(wordAsString)){
