@@ -2,8 +2,8 @@
 
 
 let possibleWordGuessesArray = possibleWordGuessesUnparesed.split(" ")
-let wordAsString = "EARTH"
-let currentWordleNumber = 230 //<---------Change wordle number here
+let wordAsString = "LEGAL"
+let currentWordleNumber = 231 //<---------Change wordle number here
 
 
 if (usedWords.includes(wordAsString)){
