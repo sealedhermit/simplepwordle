@@ -2,8 +2,8 @@
 
 
 let possibleWordGuessesArray = possibleWordGuessesUnparesed.split(" ")
-let wordAsString = "VAPID"
-let currentWordleNumber = 242 //<---------Change wordle number here
+let wordAsString = "INPUT"
+let currentWordleNumber = 243 //<---------Change wordle number here
 
 
 if (usedWords.includes(wordAsString)){
