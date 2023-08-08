@@ -2,8 +2,8 @@
 
 
 let possibleWordGuessesArray = possibleWordGuessesUnparesed.split(" ")
-let wordAsString = "GUAVA"
-let currentWordleNumber = 250 //<---------Change wordle number here
+let wordAsString = "TOXIN"
+let currentWordleNumber = 251 //<---------Change wordle number here
 
 
 if (usedWords.includes(wordAsString)){
