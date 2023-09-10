@@ -2,8 +2,8 @@
 
 
 let possibleWordGuessesArray = possibleWordGuessesUnparesed.split(" ")
-let wordAsString = "LOFTY"
-let currentWordleNumber = 273 //<---------Change wordle number here
+let wordAsString = "CLIFF"
+let currentWordleNumber = 274 //<---------Change wordle number here
 
 
 if (usedWords.includes(wordAsString)){
